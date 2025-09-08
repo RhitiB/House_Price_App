@@ -35,11 +35,11 @@ with st.form("price_form"):
 if submitted:
     # ⚠️ Feature names MUST match training columns
     X = pd.DataFrame([{
-        "age": age,
-        "distance_MRT": distance_MRT,
-        "convenience_stores": convenience_stores,
-        "latitude": latitude,
-        "longitude": longitude
+        "X2": age,
+        "X3": distance_MRT,
+        "X4": convenience_stores,
+        "X5": latitude,
+        "X6": longitude
     }])
 
     try:
