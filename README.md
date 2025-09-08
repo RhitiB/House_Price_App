@@ -37,13 +37,10 @@ It is a complete end-to-end ML workflow: **data → model → deployment**.
 - **Streamlit** – app framework & deployment
 
 ## 📂 Project Structure
+- **House_Price_App**
+- streamlit_app.py # Streamlit app code
+- random_forest.pkl # Trained ML model
+- requirements.txt # Dependencies
+- runtime.txt # Python version pin (for Streamlit Cloud)
+- README.md # Project documentation
 
-House_Price_App/
-│
-├── streamlit_app.py # Streamlit app code
-├── random_forest.pkl # Trained ML model
-├── requirements.txt # Dependencies
-├── runtime.txt # Python version pin (for Streamlit Cloud)
-└── README.md # Project documentation
-
-## 📂 Project Structure
