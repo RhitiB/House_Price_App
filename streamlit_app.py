@@ -7,11 +7,17 @@ st.set_page_config(page_title="House Price Predictor", page_icon="🏠", layout=
 
 @st.cache_resource
 def load_model():
-    # Use a relative path so it works on Streamlit Cloud/GitHub
-    model_path = Path("random_forest.pkl")
-    with open(model_path, "rb") as f:
-        model = pickle.load(f)
-    return model
+    with open("random_forest.pkl", "rb") as f:
+        obj = pickle.load(f)
+
+    # If pickle contains a dict, extract model
+    if isinstance(obj, dict):
+        if "model" in obj:
+            return obj["model"]
+        else:
+            st.error(f"Pickle contains a dict with keys: {list(obj.keys())}")
+            return None
+    return obj
 
 model = load_model()
 
@@ -27,7 +33,7 @@ with st.form("price_form"):
     submitted = st.form_submit_button("Predict")
 
 if submitted:
-    # ⚠️ Feature names MUST match the model’s training columns
+    # ⚠️ Feature names MUST match training columns
     X = pd.DataFrame([{
         "age": age,
         "distance_MRT": distance_MRT,
@@ -41,4 +47,4 @@ if submitted:
         st.success(f"Estimated price: **€{y_pred:,.0f}**")
     except Exception as e:
         st.error(f"Prediction failed: {e}")
-        st.info("Make sure the feature names and types match exactly what the model was trained on.")
+        st.info("Check that feature names and types match exactly what the model was trained on.")
