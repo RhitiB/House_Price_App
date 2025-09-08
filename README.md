@@ -43,4 +43,10 @@ It is a complete end-to-end ML workflow: **data → model → deployment**.
 - requirements.txt # Dependencies
 - runtime.txt # Python version pin (for Streamlit Cloud)
 - README.md # Project documentation
+## Creating a Virtual Environment and running the app
+```bash
+-python -m venv venv
+source venv/bin/activate  
+- pip install -r requirements.txt
+  streamlit run streamlit_app.py
 
